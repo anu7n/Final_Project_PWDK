@@ -59,12 +59,12 @@ However, there have also been stories of small businesses and/or start-ups that 
 
 <br>
 
-#### When the resul is low risk loan
+#### When the result is low risk loan
 <br>
 <center><img src="https://github.com/agunggnug/Final_Project_PWDK/blob/master/Pictures/Screen%20Shot%202020-05-26%20at%2020.18.19.png?raw=true" alt="" width="950" height="550"></center>
 <br>
 
-#### When the resul is high risk loan
+#### When the result is high risk loan
 <br>
 <center><img src="https://github.com/agunggnug/Final_Project_PWDK/blob/master/Pictures/Screen%20Shot%202020-05-26%20at%2020.19.02.png?raw=true" alt="" width="950" height="550"></center>
 <br>
