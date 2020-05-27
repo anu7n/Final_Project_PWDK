@@ -95,7 +95,7 @@ However, there have also been stories of small businesses and/or start-ups that 
 <br>
 
 <p align='justify' style="font-weight: bold;">
-NOTES : On the dashboard, to load the final dataset, I use two choices. Use sql connector to load from SQL Databases or load manually using pandas. <a href="https://github.com/agunggnug/Final_Project_PWDK/blob/master/Dashboard/model_plots.py"> Looks here </a>
+NOTES : On the dashboard, to load the final dataset, I use two choices. I use SQLAlchemy to load from SQL Databases or load manually using pandas. <a href="https://github.com/agunggnug/Final_Project_PWDK/blob/master/Dashboard/model_plots.py"> Looks here </a>
 </p>
 
 <br>
