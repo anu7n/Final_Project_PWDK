@@ -37,7 +37,7 @@ SBA acts much like an insurance provider to reduce the risk for a bank by taking
 In the case that a loan goes into default, SBA then covers the amount they guaranteed. 
 There have been many success stories of start-ups receiving SBA loan guarantees such as FedEx and Apple Computer. 
 However, there have also been stories of small businesses and/or start-ups that have defaulted on their SBA-guaranteed loans. 
-The rate of default on these loans has been a source of controversy for decades.
+  The rate of default on these loans has been a source of controversy for decades.<a href="https://doi.org/10.1080/10691898.2018.1434342">[Reference]</a></p>
   
 --------------------------------------------------------------------
  
@@ -56,16 +56,19 @@ The rate of default on these loans has been a source of controversy for decades.
 -----------------------------------------
 
 ### Result Page :
+
 <br>
-##### When the resul is low risk loan
+
+#### When the resul is low risk loan
 <br>
 <center><img src="https://github.com/agunggnug/Final_Project_PWDK/blob/master/Pictures/Screen%20Shot%202020-05-26%20at%2020.18.19.png?raw=true" alt="" width="950" height="550"></center>
 <br>
-<br>
-##### When the resul is high risk loan
+
+#### When the resul is high risk loan
 <br>
 <center><img src="https://github.com/agunggnug/Final_Project_PWDK/blob/master/Pictures/Screen%20Shot%202020-05-26%20at%2020.19.02.png?raw=true" alt="" width="950" height="550"></center>
 <br>
+
 -----------------------------------------
 
 ### About Page :
