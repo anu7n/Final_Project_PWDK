@@ -85,6 +85,37 @@ plt.tight_layout()
 
 ### 4. Tuning Hyperparameter
 
+After found two of the best algorithms which are Random Forest and Light GBM, I did tuning hyperparameter for them with GridSearchCV.  The results from tuning hyperparameter show that Light GBM gives better result than Random Forest. The following below are the parameters that  I tuned and classification report & best parameters :
+
+###### *paramaters*
+
+```
+param_model_2 = {
+    'max_depth' : [-1,7,12,14,17],
+    'num_leaves' : [31,70,120],
+    'min_data_in_leaf' : [60,100,120],
+    'learning_rate' : [0.001,0.01,0.05],
+    'num_iterations' :[200,400,600]
+}
+```
+
+```
+=============== CLASSIFICATION REPORT SCORING FROM F1 SCORE ===============
+              precision    recall  f1-score   support
+
+           0       0.84      0.81      0.83     14561
+           1       0.96      0.97      0.96     71177
+
+    accuracy                           0.94     85738
+   macro avg       0.90      0.89      0.90     85738
+weighted avg       0.94      0.94      0.94     85738
+
+tn :  11838  fp :  2723  fn :  2276  tp :  68901
+
+=============== BEST PARAMETERS SCORING FROM F1 SCORE ===============
+{'learning_rate': 0.05, 'max_depth': 12, 'min_data_in_leaf': 60, 'num_iterations': 600, 'num_leaves': 120}
+```
+
 ### 5. Set Decission Maker (Threshold)
 
 ### 6. Evaluation Model
