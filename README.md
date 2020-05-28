@@ -44,12 +44,16 @@ However, there have also been stories of small businesses and/or start-ups that 
 <h1>Step of work</h1>
 </p>
 <br>
+
 ### 1. Data Preprocessing and Exploratory Data Analysis (EDA)
 Started with import the dataset which is SBA Loan dataset. After that, I do data cleaning to remove some unnecessary simbols, give restriction to the data that will be used based on reference and EDA, change NAICS code to industrial sector, fixed nan value, remove the outlier, etc.
+
 ### 2. Feature Engineering
 At feature engineering, I add columns that maybe will be used for predicting like real estate columns. I also did one hot encoding for categorical columns like state and NAICS (Industrial Sector), drop the columns that I think it will not giving effect for modelling, check the correlation each features, etc.
+
 ### 3. Modelling
 I started modelling with standardize the continues data, doing cross validation method from five algorithms which are Logistic Regression, Decission Tree, Random Forest, Light GBM, and KNN for normal data and oversampling data (using SMOTE). After found two of the best algorithms which are from normal data (without SMOTE), then I would do tuning hyperparameter for them. In the following below are the codes and results from cross validation :
+
 ```
 # ------------  F1 Score from Normal Train Data (without SMOTE)
 # ------------ Using F1 Score because the data imbalance, so can't trust to accuracy
@@ -73,13 +77,18 @@ plt.figure(figsize=(14,4))
 sns.barplot(data=df_algo,y='Algorithm',x='F1 Score')
 plt.tight_layout()
 ```
+
 <center><img src="https://github.com/agunggnug/Final_Project_PWDK/blob/master/Pictures/Screen%20Shot%202020-05-28%20at%2012.43.10.png?raw=true" alt="" width="500" height="200"></center>
+
 <br>
 <br>
 
 ### 4. Tuning Hyperparameter
+
 ### 5. Set Decission Maker (Threshold)
+
 ### 6. Evaluation Model
+
 ### 7. Validation Model
  
 --------------------------------------------------------------------
