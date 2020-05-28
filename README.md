@@ -49,7 +49,7 @@ However, there have also been stories of small businesses and/or start-ups that 
 Started with import the dataset which is SBA Loan dataset. After that, I do data cleaning to remove some unnecessary simbols, give restriction to the data that will be used based on reference and EDA, change NAICS code to industrial sector, fixed nan value, remove the outlier, etc.
 
 ### 2. Feature Engineering
-At feature engineering, I add columns that maybe will be used for predicting like real estate columns. I also did one hot encoding for categorical columns like state and NAICS (Industrial Sector), drop the columns that I think it will not giving effect for modelling, check the correlation each features, etc.
+At feature engineering, I add columnm that maybe will be used for predicting like real estate. I also did one hot encoding for categorical columns like state and NAICS (Industrial Sector), drop the columns that I think it will not giving effect for modelling, check the correlation each features, etc.
 
 ### 3. Modelling
 I started modelling with standardize the continues data, doing cross validation method from five algorithms which are Logistic Regression, Decission Tree, Random Forest, Light GBM, and KNN for normal data and oversampling data (using SMOTE). After found two of the best algorithms which are from normal data (without SMOTE), then I would do tuning hyperparameter for them. In the following below is the result from cross validation :
