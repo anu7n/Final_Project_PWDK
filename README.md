@@ -118,11 +118,144 @@ tn :  11838  fp :  2723  fn :  2276  tp :  68901
 
 ### 5. Set Decission Maker (Threshold)
 
-### 6. Evaluation Model
+The next step is check the AUCROC from Light GBM with best parameters, then I found that it will give better result for predicting 0 (charge off) when the threshold set to 0.24. It's more important to avoid the condition when the status actually charge off and we predict as PIF (paid in full (1)) than we predict PIF as charge off. Because I want to minimize the condition that CHGOFF predicted as PIF, so we need to increase recall 0 (CHGOFF) and precission 1 (PIF).
+
+### 6. Performance Evaluation
+
+For performance evaluation, I have checked features importance, classification report and confusion matrix. The following below is the performance evaluation result (classification report and confusion matrix) when the threshold set to 0.24.
+
+```
+=============== CLASSIFICATION REPORT WITH THRESHOLD ===============
+              precision    recall  f1-score   support
+
+           0       0.75      0.91      0.82     14561
+           1       0.98      0.94      0.96     71177
+
+    accuracy                           0.93     85738
+   macro avg       0.87      0.92      0.89     85738
+weighted avg       0.94      0.93      0.94     85738
+
+
+tn :  13196  fp :  1365  fn :  4387  tp :  66790
+```
 
 ### 7. Validation Model
- 
+
+Doing validation model is very usefull to check the stability of the model that has made. For validation the model that using threshold 0.24, I use KFold with 5 fold. And the result gives good stability for each fold. The following below is the codes and results from validation model :
+
+###### *Codes*
+
+```
+# Try to validate using X_train data
+
+from sklearn.model_selection import KFold
+kf = KFold(n_splits=5,random_state=101)
+
+F1Scores = []
+AccuracyScore = []
+ClassReport = []
+
+for train_index , test_index in kf.split(X_train,y_train):
+    X_train_kf,X_test_kf,y_train_kf,y_test_kf = X_train.iloc[train_index],X_train.iloc[test_index],y_train.iloc[train_index],y_train.iloc[test_index]
+    model = LGBMClassifier(random_state=101,learning_rate=0.05,max_depth=12,min_data_in_leaf=60,num_iterations=600,num_leaves=120)
+    model.fit(X_train_kf,y_train_kf)
+    #pred_proba
+    pred = model.predict_proba(X_test_kf)
+    # Adjust threshold for predictions proba
+    pred_with_threshold = []
+    for item in pred[:,0]:
+        if item > 0.24 :
+            pred_with_threshold.append(0)
+        else:
+            pred_with_threshold.append(1)
+    F1Scores.append(round(f1_score(y_test_kf,pred_with_threshold),3))
+    AccuracyScore.append(round(accuracy_score(y_test_kf,pred_with_threshold),3))
+    ClassReport.append(classification_report(y_test_kf,pred_with_threshold))
+
+    
+print ("F1 Scores : ",F1Scores)
+print ()
+print ("Accuracy Scores : ",AccuracyScore)
+print ()
+n = 1
+for item in ClassReport:
+  print('================ Fold Number %d ================' %(n))
+  n += 1
+  print(item)
+  print()
+```
+
+###### *Results*
+
+```
+
+F1 Scores :  [0.957, 0.958, 0.956, 0.957, 0.957]
+
+Accuracy Scores :  [0.93, 0.932, 0.928, 0.931, 0.931]
+
+================ Fold Number 1 ================
+              precision    recall  f1-score   support
+
+           0       0.74      0.90      0.81      6675
+           1       0.98      0.94      0.96     33336
+
+    accuracy                           0.93     40011
+   macro avg       0.86      0.92      0.88     40011
+weighted avg       0.94      0.93      0.93     40011
+
+
+================ Fold Number 2 ================
+              precision    recall  f1-score   support
+
+           0       0.75      0.90      0.82      6854
+           1       0.98      0.94      0.96     33157
+
+    accuracy                           0.93     40011
+   macro avg       0.86      0.92      0.89     40011
+weighted avg       0.94      0.93      0.93     40011
+
+
+================ Fold Number 3 ================
+              precision    recall  f1-score   support
+
+           0       0.74      0.90      0.81      6824
+           1       0.98      0.93      0.96     33187
+
+    accuracy                           0.93     40011
+   macro avg       0.86      0.92      0.88     40011
+weighted avg       0.94      0.93      0.93     40011
+
+
+================ Fold Number 4 ================
+              precision    recall  f1-score   support
+
+           0       0.74      0.90      0.81      6707
+           1       0.98      0.94      0.96     33304
+
+    accuracy                           0.93     40011
+   macro avg       0.86      0.92      0.89     40011
+weighted avg       0.94      0.93      0.93     40011
+
+
+================ Fold Number 5 ================
+              precision    recall  f1-score   support
+
+           0       0.75      0.91      0.82      6888
+           1       0.98      0.94      0.96     33123
+
+    accuracy                           0.93     40011
+   macro avg       0.86      0.92      0.89     40011
+weighted avg       0.94      0.93      0.93     40011
+```
+
+<br>
+
 --------------------------------------------------------------------
+
+ <p align="center"  color="rgb(0, 90, 71)">
+<h1>Dashboard</h1>
+</p>
+<br>
 
 ### Home Page :
 <br>
