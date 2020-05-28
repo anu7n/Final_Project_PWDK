@@ -61,7 +61,7 @@ I started modelling with standardize the continues data, doing cross validation 
 
 ### 4. Tuning Hyperparameter
 
-After found two of the best algorithms which are Random Forest and Light GBM, I did tuning hyperparameter for them with GridSearchCV.  The results from tuning hyperparameter show that Light GBM gives better result than Random Forest. The following below are the parameters that  I tuned and classification report & best parameters :
+After found two of the best algorithms which are Random Forest and Light GBM, I did tuning hyperparameter for them with GridSearchCV.  The results from tuning hyperparameter show that Light GBM gives better result than Random Forest. The following below are the parameters that  I tuned and classification report & best parameters from Light GBM :
 
 ###### *paramaters*
 
