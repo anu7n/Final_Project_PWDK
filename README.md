@@ -78,7 +78,7 @@ sns.barplot(data=df_algo,y='Algorithm',x='F1 Score')
 plt.tight_layout()
 ```
 
-<p align="center"> <img src="https://github.com/agunggnug/Final_Project_PWDK/blob/master/Pictures/Screen%20Shot%202020-05-28%20at%2012.43.10.png?raw=true" alt="" width="700" height="300"> </p>
+<p align="center"> <img src="https://github.com/agunggnug/Final_Project_PWDK/blob/master/Pictures/Screen%20Shot%202020-05-28%20at%2012.43.10.png?raw=true" alt="" width="700" height="275"> </p>
 
 <br>
 <br>
