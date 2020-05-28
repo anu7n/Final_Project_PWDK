@@ -52,31 +52,7 @@ Started with import the dataset which is SBA Loan dataset. After that, I do data
 At feature engineering, I add columns that maybe will be used for predicting like real estate columns. I also did one hot encoding for categorical columns like state and NAICS (Industrial Sector), drop the columns that I think it will not giving effect for modelling, check the correlation each features, etc.
 
 ### 3. Modelling
-I started modelling with standardize the continues data, doing cross validation method from five algorithms which are Logistic Regression, Decission Tree, Random Forest, Light GBM, and KNN for normal data and oversampling data (using SMOTE). After found two of the best algorithms which are from normal data (without SMOTE), then I would do tuning hyperparameter for them. In the following below are the codes and results from cross validation :
-
-```
-# ------------  F1 Score from Normal Train Data (without SMOTE)
-# ------------ Using F1 Score because the data imbalance, so can't trust to accuracy
-
-algorithm = [LogisticRegression, DecisionTreeClassifier, RandomForestClassifier, LGBMClassifier, KNeighborsClassifier]
-algo_name = ['LogisticRegression','DecisionTreeClassifier','RandomForestClassifier','LGBMClassifier','KNeighborsClassifier']
-algo_F1Score = []
-
-for item in algorithm:
-  model = item()
-  F1Scores = cross_val_score(model,X_train,y_train,cv=5,scoring='f1').mean()
-  algo_F1Score.append(F1Scores)
-
-df_algo = pd.DataFrame({
-    'Algorithm' : algo_name,
-    'F1 Score' : algo_F1Score,
-})
-
-# ------------  Plot F1 Score from Normal Data Train
-plt.figure(figsize=(14,4))
-sns.barplot(data=df_algo,y='Algorithm',x='F1 Score')
-plt.tight_layout()
-```
+I started modelling with standardize the continues data, doing cross validation method from five algorithms which are Logistic Regression, Decission Tree, Random Forest, Light GBM, and KNN for normal data and oversampling data (using SMOTE). After found two of the best algorithms which are from normal data (without SMOTE), then I would do tuning hyperparameter for them. In the following below is the result from cross validation :
 
 <p align="center"> <img src="https://github.com/agunggnug/Final_Project_PWDK/blob/master/Pictures/Screen%20Shot%202020-05-28%20at%2012.43.10.png?raw=true" alt="" width="700" height="275"> </p>
 
@@ -98,6 +74,8 @@ param_model_2 = {
     'num_iterations' :[200,400,600]
 }
 ```
+
+###### *evaluation*
 
 ```
 =============== CLASSIFICATION REPORT SCORING FROM F1 SCORE ===============
@@ -141,51 +119,7 @@ tn :  13196  fp :  1365  fn :  4387  tp :  66790
 
 ### 7. Validation Model
 
-Doing validation model is very usefull to check the stability of the model that has made. For validation the model that using threshold 0.24, I use KFold with 5 fold. And the result gives good stability for each fold. The following below is the codes and results from validation model :
-
-###### *Codes*
-
-```
-# Try to validate using X_train data
-
-from sklearn.model_selection import KFold
-kf = KFold(n_splits=5,random_state=101)
-
-F1Scores = []
-AccuracyScore = []
-ClassReport = []
-
-for train_index , test_index in kf.split(X_train,y_train):
-    X_train_kf,X_test_kf,y_train_kf,y_test_kf = X_train.iloc[train_index],X_train.iloc[test_index],y_train.iloc[train_index],y_train.iloc[test_index]
-    model = LGBMClassifier(random_state=101,learning_rate=0.05,max_depth=12,min_data_in_leaf=60,num_iterations=600,num_leaves=120)
-    model.fit(X_train_kf,y_train_kf)
-    #pred_proba
-    pred = model.predict_proba(X_test_kf)
-    # Adjust threshold for predictions proba
-    pred_with_threshold = []
-    for item in pred[:,0]:
-        if item > 0.24 :
-            pred_with_threshold.append(0)
-        else:
-            pred_with_threshold.append(1)
-    F1Scores.append(round(f1_score(y_test_kf,pred_with_threshold),3))
-    AccuracyScore.append(round(accuracy_score(y_test_kf,pred_with_threshold),3))
-    ClassReport.append(classification_report(y_test_kf,pred_with_threshold))
-
-    
-print ("F1 Scores : ",F1Scores)
-print ()
-print ("Accuracy Scores : ",AccuracyScore)
-print ()
-n = 1
-for item in ClassReport:
-  print('================ Fold Number %d ================' %(n))
-  n += 1
-  print(item)
-  print()
-```
-
-###### *Results*
+Doing validation model is very usefull to check the stability of the model that has made. For validation the model that using threshold 0.24, I use KFold with 5 fold. And the result gives good stability for each fold. The following below is the result from validation model :
 
 ```
 
@@ -252,7 +186,7 @@ weighted avg       0.94      0.93      0.93     40011
 
 --------------------------------------------------------------------
 
- <p align="center"  color="rgb(0, 90, 71)">
+<p align="center"  color="rgb(0, 90, 71)">
 <h1>Dashboard</h1>
 </p>
 <br>
