@@ -127,60 +127,9 @@ F1 Scores :  [0.957, 0.958, 0.956, 0.957, 0.957]
 
 Accuracy Scores :  [0.93, 0.932, 0.928, 0.931, 0.931]
 
-================ Fold Number 1 ================
-              precision    recall  f1-score   support
-
-           0       0.74      0.90      0.81      6675
-           1       0.98      0.94      0.96     33336
-
-    accuracy                           0.93     40011
-   macro avg       0.86      0.92      0.88     40011
-weighted avg       0.94      0.93      0.93     40011
-
-
-================ Fold Number 2 ================
-              precision    recall  f1-score   support
-
-           0       0.75      0.90      0.82      6854
-           1       0.98      0.94      0.96     33157
-
-    accuracy                           0.93     40011
-   macro avg       0.86      0.92      0.89     40011
-weighted avg       0.94      0.93      0.93     40011
-
-
-================ Fold Number 3 ================
-              precision    recall  f1-score   support
-
-           0       0.74      0.90      0.81      6824
-           1       0.98      0.93      0.96     33187
-
-    accuracy                           0.93     40011
-   macro avg       0.86      0.92      0.88     40011
-weighted avg       0.94      0.93      0.93     40011
-
-
-================ Fold Number 4 ================
-              precision    recall  f1-score   support
-
-           0       0.74      0.90      0.81      6707
-           1       0.98      0.94      0.96     33304
-
-    accuracy                           0.93     40011
-   macro avg       0.86      0.92      0.89     40011
-weighted avg       0.94      0.93      0.93     40011
-
-
-================ Fold Number 5 ================
-              precision    recall  f1-score   support
-
-           0       0.75      0.91      0.82      6888
-           1       0.98      0.94      0.96     33123
-
-    accuracy                           0.93     40011
-   macro avg       0.86      0.92      0.89     40011
-weighted avg       0.94      0.93      0.93     40011
 ```
+**
+NOTES : ClassificationReport for each fold (1-5) available at Jupyter Notebook, you could look<a href="https://github.com/agunggnug/Final_Project_PWDK/blob/master/1)%20%20Final%20Project%20Purwadhika%20SBA%20Loan%20Prediction.ipynb">here</a>.
 
 <br>
 
