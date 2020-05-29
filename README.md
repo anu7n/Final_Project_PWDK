@@ -129,7 +129,7 @@ Accuracy Scores :  [0.93, 0.932, 0.928, 0.931, 0.931]
 
 ```
 **
-NOTES : ClassificationReport for each fold (1-5) available at Jupyter Notebook, you could look<a href="https://github.com/agunggnug/Final_Project_PWDK/blob/master/1)%20%20Final%20Project%20Purwadhika%20SBA%20Loan%20Prediction.ipynb">here</a>.
+NOTES : ClassificationReport for each fold (1-5) and all codes available at Jupyter Notebook, please have a look <a href="https://github.com/agunggnug/Final_Project_PWDK/blob/master/1)%20%20Final%20Project%20Purwadhika%20SBA%20Loan%20Prediction.ipynb">here</a>.
 
 <br>
 
