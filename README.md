@@ -52,7 +52,7 @@ Started with import the dataset which is SBA Loan dataset. After that, I do data
 At feature engineering, I add columnm that maybe will be used for predicting like real estate. I also did one hot encoding for categorical columns like state and NAICS (Industrial Sector), drop the columns that I think it will not give effect for modelling, check the correlation each features, etc.
 
 ### 3. Modelling
-I started modelling with standardize the continues data, doing cross validation method from five algorithms which are Logistic Regression, Decission Tree, Random Forest, Light GBM, and KNN for normal data and oversampling data (using SMOTE). After found two of the best algorithms which are from normal data (without SMOTE), then I would do tuning hyperparameter for them. In the following below is the result from cross validation :
+I started modelling with standardize the continues data, doing cross validation method from five algorithms which are Logistic Regression, Decission Tree, Random Forest, Light GBM, and KNN for normal data and oversampling data (using SMOTE). After found two of the best algorithms which are from normal data (without SMOTE), then I will tune hyperparameter for them. In the following below is the result from cross validation :
 
 <p align="center"> <img src="https://github.com/agunggnug/Final_Project_PWDK/blob/master/Pictures/Screen%20Shot%202020-05-28%20at%2012.43.10.png?raw=true" alt="" width="700" height="275"> </p>
 
@@ -61,7 +61,7 @@ I started modelling with standardize the continues data, doing cross validation 
 
 ### 4. Tuning Hyperparameter
 
-After found two of the best algorithms which are Random Forest and Light GBM, I did tuning hyperparameter for them with GridSearchCV.  The results from tuning hyperparameter show that Light GBM gives better result than Random Forest. The following below are the parameters that  I tuned and classification report & best parameters from Light GBM :
+After found two of the best algorithms which are Random Forest and Light GBM, I tuned hyperparameter for them using GridSearchCV.  The results from tuning hyperparameter show that Light GBM gives better result than Random Forest. The following below are the parameters that I tuned, classification report, and best parameters from Light GBM :
 
 ###### *paramaters*
 
@@ -78,7 +78,7 @@ param_model_2 = {
 ###### *evaluation*
 
 ```
-=============== CLASSIFICATION REPORT SCORING FROM F1 SCORE ===============
+===== CLASSIFICATION REPORT SCORING FROM F1 SCORE =====
               precision    recall  f1-score   support
 
            0       0.84      0.81      0.83     14561
@@ -90,20 +90,20 @@ weighted avg       0.94      0.94      0.94     85738
 
 tn :  11838  fp :  2723  fn :  2276  tp :  68901
 
-=============== BEST PARAMETERS SCORING FROM F1 SCORE ===============
+======== BEST PARAMETERS SCORING FROM F1 SCORE ========
 {'learning_rate': 0.05, 'max_depth': 12, 'min_data_in_leaf': 60, 'num_iterations': 600, 'num_leaves': 120}
 ```
 
-### 5. Set Decission Maker (Threshold)
+### 5. Set Threshold
 
-The next step is check the AUCROC from Light GBM with best parameters, then I found that it will give better result for predicting 0 (charge off) when the threshold set to 0.24. It's more important to avoid the condition when the status actually charge off and we predict as PIF (paid in full (1)) than we predict PIF as charge off. Because I want to minimize the condition that CHGOFF predicted as PIF, so we need to increase recall 0 (CHGOFF) and precission 1 (PIF).
+The next step is check the AUCROC from Light GBM with best parameters, then I found that it will give better result for predicting 0 - CHGOFF (charge off) when the threshold set to 0.24. It's more important to avoid the condition when the status actually CHGOFF and we predict as 1 - PIF (paid in full) than we predict PIF as CHGOFF. Because I want to minimize the condition that CHGOFF predicted as PIF, so I need to increase recall 0 (CHGOFF) and precission 1 (PIF).
 
 ### 6. Performance Evaluation
 
 For performance evaluation, I have checked features importance, classification report and confusion matrix. The following below is the performance evaluation result (classification report and confusion matrix) when the threshold set to 0.24.
 
 ```
-=============== CLASSIFICATION REPORT WITH THRESHOLD ===============
+======== CLASSIFICATION REPORT WITH THRESHOLD ========
               precision    recall  f1-score   support
 
            0       0.75      0.91      0.82     14561
@@ -122,11 +122,9 @@ tn :  13196  fp :  1365  fn :  4387  tp :  66790
 Doing validation model is very usefull to check the stability of the model that has made. For validation the model that using threshold 0.24, I use KFold with 5 fold. And the result gives good stability for each fold. The following below is the result from validation model :
 
 ```
-
-F1 Scores :  [0.957, 0.958, 0.956, 0.957, 0.957]
+F1 Scores       :  [0.957, 0.958, 0.956, 0.957, 0.957]
 
 Accuracy Scores :  [0.93, 0.932, 0.928, 0.931, 0.931]
-
 ```
 **
 NOTES : ClassificationReport for each fold (1-5) and all codes available at Jupyter Notebook, please have a look <a href="https://github.com/agunggnug/Final_Project_PWDK/blob/master/1)%20%20Final%20Project%20Purwadhika%20SBA%20Loan%20Prediction.ipynb">here</a>.
