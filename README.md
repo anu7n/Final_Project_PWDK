@@ -96,7 +96,10 @@ tn :  11838  fp :  2723  fn :  2276  tp :  68901
 
 ### 5. Set Threshold
 
-The next step is check the AUCROC from Light GBM with best parameters, then I found that it will give better result for predicting 0 - CHGOFF (charge off) when the threshold set to 0.24. It's more important to avoid the condition when the status actually CHGOFF and we predict as 1 - PIF (paid in full) than we predict PIF as CHGOFF. Because I want to minimize the condition that CHGOFF predicted as PIF, so I need to increase recall 0 (CHGOFF) and precission 1 (PIF).
+The next step is check the AUCROC from Light GBM with best parameters, then I found that it will give better result for predicting 0 (CHGOFF) when the threshold set to 0.24. It's more important to avoid the condition when the status actually CHGOFF and we predict as 1 (PIF) than we predict PIF as CHGOFF. Because I want to minimize the condition that CHGOFF predicted as PIF, so I need to increase recall 0 (CHGOFF) and precission 1 (PIF).
+<small>Information : </small>
+<small>CHGOFF = Charge Off / Defaulted</small>
+<small>PIF = Paid in Full </small>
 
 ### 6. Performance Evaluation
 
