@@ -183,13 +183,6 @@ NOTES : ClassificationReport for each fold (1-5) and all codes available at Jupy
 
 -----------------------------------------
 
-### Contact Page :
-<br>
-<center><img src="https://github.com/agunggnug/Final_Project_PWDK/blob/master/Pictures/Screen%20Shot%202020-05-26%20at%2020.20.07.png?raw=true" alt="" width="950" height="550"></center>
-<br>
-
-
------------------------------------------
 <br>
 
 <p align='justify' style="font-weight: bold;">
